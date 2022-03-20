@@ -36,6 +36,9 @@ io.on("connection", function (socket) {
 //     response.sendFile(__dirname+"/public/main.html");
 // })
 
-http.listen(`https://yogeshkumar2001.github.io/White-Board/`, function () {
+// http.listen(`https://yogeshkumar2001.github.io/White-Board/`, function () {
+//   console.log("app started at port 3000 !!!");
+// });
+http.listen(3000, function () {
   console.log("app started at port 3000 !!!");
 });
