@@ -18,7 +18,7 @@ let db = [];
 let isMouseDown = false;
 let line = [];
 let redoDb = [];
-canvas.addEventListener("mousedown", function (e) {
+canvas.addEventListener("touchstart", function (e) {
   isMouseDown = true;
   let x = e.clientX;
   let y = e.clientY - canvasTop;
@@ -34,8 +34,9 @@ canvas.addEventListener("mousedown", function (e) {
   };
   line.push(pointObject);
   socket.emit("md", pointObject);
+  console.log("touchstart")
 });
-canvas.addEventListener("mousemove", function (e) {
+canvas.addEventListener("touchmove", function (e) {
   if (redoDb.length) {
     redoDb = [];
   }
@@ -51,9 +52,10 @@ canvas.addEventListener("mousemove", function (e) {
     };
     line.push(pointObject);
     socket.emit("mm", pointObject);
+    console.log("touchmove")
   }
 });
-canvas.addEventListener("mouseup", function (e) {
+canvas.addEventListener("touchend", function (e) {
   isMouseDown = false;
   db.push(line);
   line = [];
@@ -76,10 +78,10 @@ if (isMobileDevice) {
   document.write("You are using a Mobile Device");
   console.log("mobile");
   let tools = document.getElementById("yuvi");
-  // tools.style.backgroundColor = "red";
+  tools.style.backgroundColor = "red";
 } else {
   document.write("You are using Desktop");
   console.log("desktop");
   let tools = document.getElementById("yuvi");
-  // tools.style.backgroundColor = "green";
+  tools.style.backgroundColor = "green";
 }
